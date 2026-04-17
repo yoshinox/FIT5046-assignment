@@ -1,10 +1,12 @@
 package com.fit5046.elderlycare.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 private val LightColors = lightColorScheme(
@@ -27,10 +29,14 @@ private val DarkColors = darkColorScheme(
 
 @Composable
 fun ElderlyCareTheme(content: @Composable () -> Unit) {
-    val colors = if (isSystemInDarkTheme()) DarkColors else LightColors
+    val colors = LightColors
 
-    MaterialTheme(
-        colorScheme = colors,
-        content = content
-    )
+    MaterialTheme(colorScheme = colors) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            content()
+        }
+    }
 }
