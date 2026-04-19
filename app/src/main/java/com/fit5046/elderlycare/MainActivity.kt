@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocalPharmacy
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.RestaurantMenu
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -84,7 +85,7 @@ enum class Destination(
     HOME("home", "Home", Icons.Default.Home),
     MEDICATION("medication", "Medication", Icons.Default.LocalPharmacy),
     NUTRITION("nutrition", "Nutrition", Icons.Default.RestaurantMenu),
-    SETTINGS("settings", "Settings", Icons.Default.Settings)
+    SETTINGS("settings", "Profile", Icons.Default.Person)
 }
 
 class MainActivity : ComponentActivity() {
@@ -111,7 +112,7 @@ fun ElderlyCareApp() {
         Destination.HOME.route -> "Home Screen"
         Destination.MEDICATION.route -> "Medication Screen"
         Destination.NUTRITION.route -> "Nutrition Screen"
-        Destination.SETTINGS.route -> "Settings Screen"
+        Destination.SETTINGS.route -> "My Profile"
         else -> "Elderly Care App"
     }
 
@@ -208,7 +209,7 @@ fun ElderlyCareApp() {
                     NutritionScreen()
                 }
                 composable(Destination.SETTINGS.route) {
-                    SettingsScreen()
+                    ProfileScreen()
                 }
             }
         }
@@ -238,37 +239,6 @@ fun HomeScreen() {
     }
 }
 
-@Composable
-fun MedicationScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFFBF7FF)),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "Medication Screen",
-            style = MaterialTheme.typography.headlineMedium,
-            color = Color(0xFF1A1A1A)
-        )
-    }
-}
-
-@Composable
-fun SettingsScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFFBF7FF)),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "Settings Screen",
-            style = MaterialTheme.typography.headlineMedium,
-            color = Color(0xFF1A1A1A)
-        )
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
